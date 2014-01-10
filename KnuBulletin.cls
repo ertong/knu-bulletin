@@ -17,6 +17,10 @@
 \ifxetex
     \usepackage[no-math]{fontspec}
     \setmainfont[Ligatures=TeX]{Times New Roman}
+    \setsansfont{Arial}
+    \setmonofont[Scale=0.9]{Courier New}
+	\newfontfamily{\cyrillicfonttt}[Scale=0.9]{Courier New}
+	
     \RequirePackage{polyglossia}
     \setdefaultlanguage{ukrainian}
 \else
@@ -44,6 +48,11 @@
 \RequirePackage{float}
 \RequirePackage{titlesec}
 \titleformat*{\section}{\normalfont\centering\bfseries}
+\titlespacing{\section}{0pt}{*1}{*1}
+
+
+%1em=12pt 1.4pt = 0.117
+\usepackage{soul}
 
 % % Оформлення теорем
 
@@ -51,8 +60,22 @@
 bodyfont=\normalfont
 ]{thmstyle}
 \declaretheorem[name=Теорема, style=thmstyle]{theorem}
+\declaretheorem[name=Твердження, style=thmstyle]{statement}
 \declaretheorem[name=Лема, style=thmstyle]{lemma}
 \declaretheorem[name=Наслідок, style=thmstyle]{corollary}
+
+\declaretheoremstyle[
+headfont=\normalfont\it,
+bodyfont=\normalfont
+]{defstyle}
+\declaretheorem[name=Означення, style=defstyle]{definition}
+
+\declaretheoremstyle[
+headfont=\normalfont,
+bodyfont=\normalfont
+]{examplestyle}
+\declaretheorem[name={\addfontfeature{LetterSpace=14.0} Приклад}, style=examplestyle]{example}
+\declaretheorem[name={\addfontfeature{LetterSpace=14.0} Зауваження}, style=examplestyle]{remark}
 
 %\theoremstyle{definition}
 %\newtheorem{definition}[theorem]{Означення}
@@ -63,7 +86,7 @@ bodyfont=\normalfont
 
 \renewenvironment{proof}
 {\par\noindent{\it Доведення.}}
-{\hfill$\scriptstyle \blacksquare $\\}
+{\hfill$\scriptstyle \blacksquare $}
 
 % % Деякі скорочення для формул
 
